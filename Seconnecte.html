@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0">
+    <title>SKM</title>
+    <style>
+    body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100vh;
+    }
+    .form-container{
+    backgroud:white;
+    padding:20px 30px;
+    border-raduis:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    width:300px;
+    }
+    h2{
+    text-align:center;
+    margin-bottom:20px;
+    }
+    label{
+    font-weight:bold;
+    display:block;
+    margin-top:10px;
+    }
+    input{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    borde:1px solid#ccc;
+    border-radius:4px;
+    }
+    button{
+    margin-top:15px;
+    width:100%;
+    padding:10px;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:16px;
+    }
+    button:hover{
+    background:#218838;
+    }
+    .error{
+    color:red;
+    font-size:0.9em;
+    }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>se connecter sur son compt SKM</h2>
+        <form id="loginForm">
+            <P>
+            Email:
+            <input type="text" id="loginEmail" placeholder="Email" required>
+            Mot de Passe:
+  <input type="password" id="loginPassword" placeholder="Mot de passe" required>
+  </p>
+  <button type="submit">Se connecter</button>
+  <a href="Index.html">Retour</a>
+</form>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  try {
+    const user = await Parse.User.logIn(
+      document.getElementById("loginUsername").value,
+      document.getElementById("loginPassword").value
+    );
+    alert("Bienvenue " + user.get("username") + " !");
+  } catch (error) {
+    alert("Erreur : " + error.message);
+  }
+});
+</script>
+
+    
+    
